@@ -1,0 +1,13 @@
+<div class="mc-content">
+  <mc-photo-card *ngFor="let photo of photos" [mc-photo]="photo" (click)="onPhotoClick(photo)">
+  </mc-photo-card>
+</div>
+<div class="mc-toolbar">
+  <button md-raised-button
+          color="primary"
+          *ngIf="hasMore()"
+          [disabled]="isShowMoreButtonDisabled"
+          (click)="loadMore()">
+          Show more
+  </button>
+</div>

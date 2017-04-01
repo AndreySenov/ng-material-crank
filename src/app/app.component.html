@@ -1,0 +1,28 @@
+<md-sidenav-container>
+  <md-toolbar>
+    <button md-icon-button (click)="sidenav.open()">
+      <md-icon class="icon-menu">
+      </md-icon>
+    </button>
+    <span>{{pageTitle}}</span>
+  </md-toolbar>
+  <md-sidenav #sidenav (click)="sidenav.close()">
+    <md-list>
+      <md-list-item>
+        <button md-button routerLink="/photostream">
+          <md-icon class="icon-picture">
+          </md-icon>
+          <span>Photostream</span>
+        </button>
+      </md-list-item>
+      <md-list-item>
+        <button md-button routerLink="/albums">
+          <md-icon class="icon-object-group">
+          </md-icon>
+          <span>Albums</span>
+        </button>
+      </md-list-item>
+    </md-list>
+  </md-sidenav>
+  <router-outlet></router-outlet>
+</md-sidenav-container>

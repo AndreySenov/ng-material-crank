@@ -1,0 +1,32 @@
+yarn upgrade ^
+angular2-template-loader ^
+awesome-typescript-loader ^
+clean-webpack-plugin ^
+cross-env ^
+css-loader ^
+extract-text-webpack-plugin ^
+file-loader ^
+html-loader ^
+html-webpack-plugin ^
+node-sass ^
+reset-css ^
+sass-loader ^
+style-loader ^
+typescript ^
+url-loader ^
+webpack ^
+webpack-dev-server ^
+@angular/common ^
+@angular/compiler ^
+@angular/core ^
+@angular/forms ^
+@angular/http ^
+@angular/material ^
+@angular/platform-browser ^
+@angular/platform-browser-dynamic ^
+@angular/router ^
+es6-shim ^
+hammerjs ^
+reflect-metadata ^
+rxjs ^
+zone.js

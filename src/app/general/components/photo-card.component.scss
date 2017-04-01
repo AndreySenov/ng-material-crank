@@ -1,0 +1,30 @@
+@media screen and (max-width: 450px) {
+  mc-photo-card img {
+    width: 100% !important;
+  }
+}
+
+mc-photo-card {
+  cursor: pointer;
+
+  $photoWidth: 400px;
+
+  .mat-card {
+    padding: 24px 0 12px 0;
+    max-width: $photoWidth;
+  }
+
+  legend {
+    padding: 0 12px 12px;
+  }
+
+  img {
+    width: $photoWidth;
+    opacity: 0;
+
+    &.mc-loaded {
+      opacity: 1;
+      transition: opacity 1s;
+    }
+  }
+}
