@@ -1,11 +1,10 @@
-import { OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs';
 
+import { AbstractPageComponent } from './AbstractPageComponent';
 import { FlickrPhotos, FlickrPhoto } from '../general/general.module';
 import { SharedRouteDataService } from '../routing/SharedRouteDataService';
 
-export abstract class AbstractPhotoListComponent implements OnInit {
+export abstract class AbstractPhotoListComponent extends AbstractPageComponent {
 
   photos: FlickrPhoto[];
   isShowMoreButtonDisabled: boolean;
@@ -13,17 +12,17 @@ export abstract class AbstractPhotoListComponent implements OnInit {
   private currentPage: number;
 
   constructor (
-    protected activatedRoute: ActivatedRoute,
-    protected sharedRouteDataService: SharedRouteDataService
-  ) {}
+    activatedRoute: ActivatedRoute,
+    sharedRouteDataService: SharedRouteDataService
+  ) {
+    super(activatedRoute, sharedRouteDataService);
+  }
 
   abstract onPhotoClick(photo: FlickrPhoto): void;
   protected abstract doLoadMore(nextPage: number): Promise<FlickrPhotos>;
 
   ngOnInit(): void {
-    this.sharedRouteDataService.pageTitle.next(
-      this.activatedRoute.snapshot.data.pageTitle
-    );
+    super.ngOnInit();
     const resolvedItems: FlickrPhotos =
       this.activatedRoute.snapshot.data.initialData;
     this.totalPages = resolvedItems.pages;

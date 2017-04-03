@@ -1,0 +1,38 @@
+@import '../common.scss';
+
+@media screen and (max-width: 1024px) {
+  .mc-photo-card-container {
+    padding: 0 !important;
+  }
+}
+
+.mc-photo-card-container {
+  @include content-position-fixed($toolbarHeight);
+
+  padding: 8px 10%;
+  overflow: auto;
+
+  .mc-content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .mc-toolbar {
+    display: flex;
+    justify-content: center;
+    padding: 32px;
+  }
+
+  mc-photo-card {
+    margin: 16px;
+  }
+}
+
+.mc-error-page {
+  @include content-position-fixed($toolbarHeight);
+
+  > h1, > div {
+    text-align: center;
+  }
+}

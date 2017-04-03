@@ -1,0 +1,41 @@
+$fontSize: 16px;
+
+html {
+  overflow: hidden;
+}
+
+body {
+  font-size: $fontSize;
+}
+
+a {
+  text-decoration: none;
+}
+
+h1 {
+  font-size: 3em;
+}
+
+.mc-block {
+  display: block;
+}
+
+.mc-inline-block {
+  display: inline-block;
+}
+
+$toolbarHeight: 48px;
+
+@mixin toolbar-height {
+  height: $toolbarHeight;
+  min-height: $toolbarHeight;
+  min-height: $toolbarHeight;
+}
+
+@mixin content-position-fixed($top) {
+  position: fixed;
+  top: $top;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}

@@ -3,6 +3,9 @@ import { RouterModule, Routes } from '@angular/router';
 
 import {
   PagesModule,
+  PageData,
+  ErrorPageData,
+  ErrorPageComponent,
   PhotostreamComponent,
   PhotoAlbumsComponent,
   PhotoAlbumComponent,
@@ -12,7 +15,7 @@ import {
   PhotoAlbumTitleResolver
 } from '../pages/pages.module';
 
-import { SharedRouteDataService, TopLevelRouteData } from './SharedRouteDataService';
+import { SharedRouteDataService } from './SharedRouteDataService';
 
 const routes: Routes = [
   {
@@ -21,7 +24,7 @@ const routes: Routes = [
     resolve: {
       initialData: PhotostreamResolver
     },
-    data: <TopLevelRouteData>{
+    data: <PageData>{
       pageTitle: 'Photostream'
     }
   },
@@ -31,7 +34,7 @@ const routes: Routes = [
     resolve: {
       initialData: PhotoAlbumsResolver
     },
-    data: <TopLevelRouteData>{
+    data: <PageData>{
       pageTitle: 'Albums'
     }
   },
@@ -42,9 +45,22 @@ const routes: Routes = [
       initialData: PhotoAlbumResolver,
       pageTitle: PhotoAlbumTitleResolver
     },
-    data: <TopLevelRouteData>{}
+    data: <PageData>{}
   },
-  { path: '', redirectTo: '/photostream', pathMatch: 'full' }
+  {
+    path: '',
+    redirectTo: '/photostream',
+    pathMatch: 'full'
+  },
+  {
+    path: '**',
+    component: ErrorPageComponent,
+    data: <ErrorPageData>{
+      pageTitle: 'Page Not Found',
+      errorCode: 404,
+      errorTitle: 'Not Found'
+    }
+  }
 ];
 
 @NgModule({

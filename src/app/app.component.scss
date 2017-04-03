@@ -3,29 +3,9 @@
 @import '../assets/css/fontello.css';
 @import '../assets/css/fontello-codes.css';
 
+@import './common.scss';
 @import './general/components/index.scss';
-
-$fontSize: 16px;
-
-html {
-  overflow: hidden;
-}
-
-body {
-  font-size: $fontSize;
-}
-
-a {
-  text-decoration: none;
-}
-
-.mc-block {
-  display: block;
-}
-
-.mc-inline-block {
-  display: inline-block;
-}
+@import './pages/index.scss';
 
 md-sidenav .mat-button {
   width: 100%;
@@ -36,38 +16,22 @@ md-sidenav .mat-button {
   }
 }
 
-$toolbarHeight: 48px;
-
-@mixin position-fixed($top, $right, $bottom, $left) {
-  position: fixed;
-  top: $top;
-  right: $right;
-  bottom: $bottom;
-  left: $left;
-}
-
 app-root {
-  @include position-fixed(0, 0, 0, 0);
+  @include content-position-fixed(0);
 
   .mat-sidenav-container {
-    @include position-fixed(0, 0, 0, 0);
+    @include content-position-fixed(0);
 
     .mat-sidenav-content {
       overflow: hidden;
     }
   }
 
-  @mixin toolbarHeight {
-    height: $toolbarHeight;
-    min-height: $toolbarHeight;
-    min-height: $toolbarHeight;
-  }
-
   .mat-toolbar {
-    @include toolbarHeight;
+    @include toolbar-height;
 
     .mat-toolbar-row {
-      @include toolbarHeight;
+      @include toolbar-height;
     }
   }
 
@@ -79,34 +43,5 @@ app-root {
     .mat-button-focus-overlay {
       background-color: initial;
     }
-  }
-}
-
-@media screen and (max-width: 1024px) {
-  .mc-photo-card-container {
-    padding: 0 !important;
-  }
-}
-
-.mc-photo-card-container {
-  @include position-fixed($toolbarHeight, 0, 0, 0);
-
-  padding: 8px 10%;
-  overflow: auto;
-
-  .mc-content {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-  }
-
-  .mc-toolbar {
-    display: flex;
-    justify-content: center;
-    padding: 32px;
-  }
-
-  mc-photo-card {
-    margin: 16px;
   }
 }
