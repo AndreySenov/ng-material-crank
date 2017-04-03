@@ -36,7 +36,7 @@ const routes: Routes = [
     }
   },
   {
-    path: 'albums/:albumId',
+    path: 'album/:albumId',
     component: PhotoAlbumComponent,
     resolve: {
       initialData: PhotoAlbumResolver,

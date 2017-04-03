@@ -105,7 +105,7 @@ function createFlickPhotoFromPhotoSet(photoSet: PhotoSet): FlickrPhoto {
   return Object.assign(new FlickrPhoto(), {
     title: photoSet.title._content,
     photoUrl: `https://farm${photoSet.farm}.staticflickr.com/${photoSet.server}/${photoSet.primary}_${photoSet.secret}.jpg`,
-    stateUrl: `/albums/${photoSet.id}`
+    stateUrl: `/album/${photoSet.id}`
   });
 }
 
