@@ -1,8 +1,8 @@
 yarn upgrade ^
+@types/node ^
 angular2-template-loader ^
 awesome-typescript-loader ^
 clean-webpack-plugin ^
-cross-env ^
 css-loader ^
 extract-text-webpack-plugin ^
 file-loader ^
@@ -16,6 +16,7 @@ typescript ^
 url-loader ^
 webpack ^
 webpack-dev-server ^
+@angular/animations ^
 @angular/common ^
 @angular/compiler ^
 @angular/core ^
