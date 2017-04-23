@@ -6,6 +6,11 @@ Please visit the live demo to test the app in action:
 
 https://ng-material-crank.herokuapp.com
 
+## Legal
+This software uses the [Flickr API](https://www.flickr.com/services/api/) but is not endorsed or certified by Flickr.
+
+The source code is distributed under the [MIT license](https://opensource.org/licenses/MIT). Its copy is available in `LICENSE` file. The terms of the license don't apply to photos obtained from Flickr. Each photo may have its own author and license.
+
 ## Setup
 
 * Install [Node](https://nodejs.org) and [Yarn](https://yarnpkg.com)
@@ -28,7 +33,7 @@ https://ng-material-crank.herokuapp.com
 
 ## Build
 
-Run `yarn run build` to make a production build of the project. The build artifacts are placed in `build/` subdirectory. There will be three bundles: `app.js`, `app.css` and `vendor.js`. Surely, you have already guessed the purpose of each of them:
+Run `yarn build` to make a production build of the project. The build artifacts are placed in `build/` subdirectory. There will be three bundles: `app.js`, `app.css` and `vendor.js`. Surely, you have already guessed the purpose of each of them:
 
 * `app.js` contains the application code along with external HTML templates of Angular components.
 * `app.css` amalgamates all `CSS`, `SCSS` and `SASS` files of the project. If you want to add a 3rd party file to this bundle, import one to `src/app/app.component.scss` file.
@@ -36,4 +41,4 @@ Run `yarn run build` to make a production build of the project. The build artifa
 
 ## Development server
 
-Run `yarn run serve` to start serving a development bundle on port `8080`. The app will be available at `localhost:8080` and automatically reloaded when any source files are changed. The bundle contains source maps so you'll be able to debug the code. If you need to choose a different port number, add `port: <number>` entry to `devServer` section of `webpack.config.js` file.
+Run `yarn serve` to start serving a development bundle on port `8080`. The app will be available at `localhost:8080` and automatically reloaded when any source files are changed. The bundle contains source maps so you'll be able to debug the code. If you need to choose a different port number, add `port: <number>` entry to `devServer` section of `webpack.config.js` file.
