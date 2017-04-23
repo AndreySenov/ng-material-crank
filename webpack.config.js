@@ -83,7 +83,6 @@ module.exports = {
       srcPath
     ),
     new webpack.DefinePlugin({
-      'ENV': JSON.stringify(process.env.NODE_ENV),
       'API_KEY': JSON.stringify(define.flickr.apiKey),
       'USER_ID': JSON.stringify(define.flickr.userId)
     }),
