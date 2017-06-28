@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '@angular/material';
 import { NgModule } from '@angular/core';
+import { HttpModule } from '@angular/http';
 
 import { PhotoCard } from './components/photo-card.component';
 
@@ -14,7 +15,8 @@ export * from './services/restful.service';
 @NgModule({
   imports: [
     CommonModule,
-    MaterialModule
+    MaterialModule,
+    HttpModule
   ],
   declarations: [
     PhotoCard
