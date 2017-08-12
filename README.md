@@ -1,4 +1,12 @@
-# ng-material-crank [![Build status](https://travis-ci.org/AndreySenov/ng-material-crank.svg?branch=master)](https://travis-ci.org/AndreySenov/ng-material-crank)
+[build]: https://travis-ci.org/AndreySenov/ng-material-crank.svg?branch=master
+[build-url]: https://travis-ci.org/AndreySenov/ng-material-crank
+
+[deps]: https://david-dm.org/AndreySenov/ng-material-crank.svg
+[deps-url]: https://david-dm.org/AndreySenov/ng-material-crank
+
+# ng-material-crank
+[![build][build]][build-url]
+[![deps][deps]][deps-url]
 
 This project was created in order to try features of [Angular](https://angular.io), [Angular Material](https://material.angular.io) and [Webpack](https://webpack.js.org/). In a nutshell, this is a single-page app which loads photos from [Flickr](https://www.flickr.com/) using [Http](https://angular.io/docs/ts/latest/api/http/index/Http-class.html) and shows them in the form of [cards](https://material.angular.io/components/component/card). The cards are divided into three groups that are actually [Routes](https://angular.io/docs/ts/latest/api/router/index/Routes-type-alias.html): the photostream, the list of photo albums and the content of the albums.
 
