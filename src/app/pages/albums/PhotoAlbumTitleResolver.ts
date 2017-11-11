@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 
-import { FlickrService } from '../../general/general.module';
+import { FlickrService } from '../../services/services.module';
 
 @Injectable()
 export class PhotoAlbumTitleResolver implements Resolve<String> {

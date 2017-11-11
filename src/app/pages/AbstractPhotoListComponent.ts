@@ -1,7 +1,7 @@
 import { ActivatedRoute } from '@angular/router';
 
 import { AbstractPageComponent } from './AbstractPageComponent';
-import { FlickrPhotos, FlickrPhoto } from '../general/general.module';
+import { FlickrPhotos, FlickrPhoto } from '../services/services.module';
 import { SharedRouteDataService } from '../routing/SharedRouteDataService';
 
 export abstract class AbstractPhotoListComponent extends AbstractPageComponent {

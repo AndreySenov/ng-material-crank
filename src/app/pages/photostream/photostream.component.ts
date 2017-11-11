@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 
 import { AbstractPhotoListComponent } from '../AbstractPhotoListComponent';
 import { SharedRouteDataService } from '../../routing/SharedRouteDataService';
-import { FlickrPhotos, FlickrPhoto, FlickrService } from '../../general/general.module';
+import { FlickrPhotos, FlickrPhoto, FlickrService } from '../../services/services.module';
 
 @Component({
   selector: 'photostream',

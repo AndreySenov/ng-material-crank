@@ -71,6 +71,9 @@ const routes: Routes = [
   exports: [
     PagesModule,
     RouterModule
-  ]
+  ],
+  providers: [
+    SharedRouteDataService
+  ],
 })
 export class RoutingModule { }

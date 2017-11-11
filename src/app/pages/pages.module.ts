@@ -1,8 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
-import { GeneralModule } from '../general/general.module';
-
+import { ComponentsModule } from '../components/components.module';
 import { PageData } from './AbstractPageComponent';
 import { ErrorPageComponent, ErrorPageData } from './errors/error-page.component';
 import { PhotostreamComponent } from './photostream/photostream.component';
@@ -29,7 +28,7 @@ export {
 @NgModule({
   imports: [
     CommonModule,
-    GeneralModule
+    ComponentsModule
   ],
   declarations: [
     ErrorPageComponent,
