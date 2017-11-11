@@ -1,28 +1,28 @@
-<md-sidenav-container>
-  <md-toolbar>
-    <button md-icon-button (click)="sidenav.open()">
-      <md-icon class="icon-menu">
-      </md-icon>
+<mat-sidenav-container>
+  <mat-toolbar>
+    <button mat-icon-button (click)="sidenav.open()">
+      <mat-icon class="icon-menu">
+      </mat-icon>
     </button>
     <span class="mc-page-title">{{pageTitle}}</span>
-  </md-toolbar>
-  <md-sidenav #sidenav (click)="sidenav.close()">
-    <md-list>
-      <md-list-item>
-        <button md-button routerLink="/photostream">
-          <md-icon class="icon-picture">
-          </md-icon>
+  </mat-toolbar>
+  <mat-sidenav #sidenav (click)="sidenav.close()">
+    <mat-list>
+      <mat-list-item>
+        <button mat-button routerLink="/photostream">
+          <mat-icon class="icon-picture">
+          </mat-icon>
           <span>Photostream</span>
         </button>
-      </md-list-item>
-      <md-list-item>
-        <button md-button routerLink="/albums">
-          <md-icon class="icon-object-group">
-          </md-icon>
+      </mat-list-item>
+      <mat-list-item>
+        <button mat-button routerLink="/albums">
+          <mat-icon class="icon-object-group">
+          </mat-icon>
           <span>Albums</span>
         </button>
-      </md-list-item>
-    </md-list>
-  </md-sidenav>
+      </mat-list-item>
+    </mat-list>
+  </mat-sidenav>
   <router-outlet></router-outlet>
-</md-sidenav-container>
+</mat-sidenav-container>

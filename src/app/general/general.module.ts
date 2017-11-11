@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { MaterialModule } from '@angular/material';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
+
+import { MaterialModule } from './material.module';
 
 import { PhotoCard } from './components/photo-card.component';
 

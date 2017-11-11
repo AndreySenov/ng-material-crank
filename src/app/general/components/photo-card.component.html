@@ -1,6 +1,6 @@
-<md-card>
+<mat-card>
   <legend>{{photo.title}}</legend>
-  <md-card-content>
+  <mat-card-content>
     <img [ngClass]="{'mc-loaded': isLoaded}" src="{{photo.photoUrl}}" (load)="onLoad()">
-  </md-card-content>
-</md-card>
+  </mat-card-content>
+</mat-card>

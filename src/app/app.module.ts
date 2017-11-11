@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
-import { MaterialModule } from '@angular/material';
 
+import { GeneralModule } from './general/general.module';
 import { RoutingModule } from './routing/routing.module';
 import { SharedRouteDataService } from './routing/SharedRouteDataService';
 
@@ -12,9 +12,9 @@ import { AppComponent } from './app.component';
 @NgModule({
   imports: [
     CommonModule,
-    BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
-    MaterialModule,
+    GeneralModule,
     RoutingModule
   ],
   declarations: [
