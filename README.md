@@ -1,12 +1,24 @@
+[license]: https://img.shields.io/badge/license-MIT-blue.svg
+[license-url]: https://github.com/AndreySenov/ng-material-crank/blob/master/LICENSE
+
 [build]: https://travis-ci.org/AndreySenov/ng-material-crank.svg?branch=master
 [build-url]: https://travis-ci.org/AndreySenov/ng-material-crank
 
-[deps]: https://david-dm.org/AndreySenov/ng-material-crank.svg
+[prs-welcome]: https://img.shields.io/badge/PRs-welcome-brightgreen.svg
+[prs-welcome-url]: https://github.com/AndreySenov/ng-material-crank/pulls
+
+[deps]: https://david-dm.org/AndreySenov/ng-material-crank/status.svg
 [deps-url]: https://david-dm.org/AndreySenov/ng-material-crank
 
+[deps-dev]: https://david-dm.org/AndreySenov/ng-material-crank/dev-status.svg
+[deps-dev-url]: https://david-dm.org/AndreySenov/ng-material-crank?type=dev
+
 # ng-material-crank
+[![license][license]][license-url]
 [![build][build]][build-url]
+[![prs-welcome][prs-welcome]][prs-welcome-url]
 [![deps][deps]][deps-url]
+[![deps-dev][deps-dev]][deps-dev-url]
 
 This project was created in order to try features of [Angular](https://angular.io), [Angular Material](https://material.angular.io) and [Webpack](https://webpack.js.org/). In a nutshell, this is a single-page app which loads photos from [Flickr](https://www.flickr.com/) using [Http](https://angular.io/docs/ts/latest/api/http/index/Http-class.html) and shows them in the form of [cards](https://material.angular.io/components/component/card). The cards are divided into three groups that are actually [Routes](https://angular.io/docs/ts/latest/api/router/index/Routes-type-alias.html): the photostream, the list of photo albums and the content of the albums.
 
@@ -15,7 +27,7 @@ Please visit the [live demo](https://ng-material-crank.firebaseapp.com) to test 
 ## Legal
 This software uses the [Flickr API](https://www.flickr.com/services/api/) but is not endorsed or certified by Flickr.
 
-The source code is distributed under the [MIT license](https://opensource.org/licenses/MIT). Its copy is available in `LICENSE` file. The terms of the license don't apply to photos obtained from Flickr. Each photo may have its own author and license.
+The source code is distributed under the [MIT license](https://opensource.org/licenses/MIT). Its copy is available in `LICENSE` file. The terms of the license don't apply to photos/videos obtained from Flickr. Each photo/video may have its own author and license.
 
 ## Setup
 
