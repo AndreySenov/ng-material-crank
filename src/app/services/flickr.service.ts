@@ -93,6 +93,11 @@ export class FlickrPhoto {
 declare const API_KEY: string;
 declare const USER_ID: string;
 
+export {
+  API_KEY,
+  USER_ID
+}
+
 function createFlickPhoto(photo: Photo): FlickrPhoto {
   return Object.assign(new FlickrPhoto(), {
     title: photo.title,

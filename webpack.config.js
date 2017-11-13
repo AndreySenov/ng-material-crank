@@ -1,4 +1,4 @@
-const { CheckerPlugin } = require('awesome-typescript-loader')
+const { AngularCompilerPlugin } = require('@ngtools/webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -30,11 +30,8 @@ module.exports = {
   module: {
     loaders: [
       {
-        test: /\.ts$/,
-        loaders: [
-          'angular2-template-loader',
-          'awesome-typescript-loader'
-        ]
+        test:  /(?:\.ngfactory\.js|\.ngstyle\.js|\.ts)$/,
+        loader: '@ngtools/webpack'
       },
       {
         test: /\.html$/,
@@ -77,16 +74,12 @@ module.exports = {
     ]
   },
   plugins: [
-    new webpack.ContextReplacementPlugin(
-      /angular(\\|\/)core(\\|\/)/,
-      srcPath
-    ),
+    new webpack.ContextReplacementPlugin(/angular(\\|\/)core(\\|\/)/, srcPath),
     new webpack.DefinePlugin({
       'API_KEY': JSON.stringify(define.flickr.apiKey),
       'USER_ID': JSON.stringify(define.flickr.userId)
     }),
     new ExtractTextPlugin("[name].css"),
-    new CheckerPlugin(),
     new CleanWebpackPlugin([buildPath]),
     new HtmlWebpackPlugin({
       template: path.join(srcPath, 'index.html'),
@@ -96,6 +89,10 @@ module.exports = {
     new webpack.optimize.CommonsChunkPlugin({
       name: "vendor",
       filename: "vendor.js"
+    }),
+    new AngularCompilerPlugin({
+      tsConfigPath: path.join(basePath, 'tsconfig.json'),
+      mainPath: path.join(srcPath, 'main.ts')
     })
   ]
 };

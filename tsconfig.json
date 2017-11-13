@@ -13,6 +13,9 @@
       "node_modules/@types"
     ]
   },
+  "angularCompilerOptions": {
+    "strictMetadataEmit" : true
+  },
   "compileOnSave": false,
   "buildOnSave": false
 }

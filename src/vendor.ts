@@ -3,7 +3,6 @@ import 'reflect-metadata';
 import '@angular/animations';
 import '@angular/cdk';
 import '@angular/common';
-import '@angular/compiler';
 import '@angular/core';
 import '@angular/forms';
 import '@angular/http';
