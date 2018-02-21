@@ -13,8 +13,9 @@ const srcPath = path.join(basePath, 'src');
 
 module.exports = {
   entry: {
-    app: [path.join(srcPath, 'main.ts')],
-    vendor: [path.join(srcPath, 'vendor.ts')]
+    polyfill: path.join(srcPath, 'polyfill.ts'),
+    vendor: path.join(srcPath, 'vendor.ts'),
+    app: path.join(srcPath, 'main.ts')
   },
   output: {
     path: buildPath,
@@ -87,8 +88,8 @@ module.exports = {
       hash: true
     }),
     new webpack.optimize.CommonsChunkPlugin({
-      name: "vendor",
-      filename: "vendor.js"
+      names: ['vendor', 'polyfill'],
+      filename: '[name].js'
     }),
     new AngularCompilerPlugin({
       tsConfigPath: path.join(basePath, 'tsconfig.json'),

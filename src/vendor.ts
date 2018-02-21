@@ -1,5 +1,3 @@
-import 'es6-shim';
-import 'reflect-metadata';
 import '@angular/animations';
 import '@angular/cdk';
 import '@angular/common';
