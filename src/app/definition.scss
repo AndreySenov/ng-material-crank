@@ -1,0 +1,16 @@
+$fontSize: 16px;
+$toolbarHeight: 48px;
+
+@mixin content-position-fixed($top) {
+  position: fixed;
+  top: $top;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+@mixin toolbar-height {
+  height: $toolbarHeight;
+  min-height: $toolbarHeight;
+  min-height: $toolbarHeight;
+}

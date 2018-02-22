@@ -1,11 +1,4 @@
-@import '~reset-css/reset.css';
-@import '~@angular/material/prebuilt-themes/indigo-pink.css';
-@import '../assets/css/fontello.css';
-@import '../assets/css/fontello-codes.css';
-
-@import './common.scss';
-@import './components/index.scss';
-@import './pages/index.scss';
+@import './definition.scss';
 
 mat-sidenav .mat-button {
   width: 100%;

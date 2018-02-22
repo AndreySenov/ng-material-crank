@@ -80,7 +80,7 @@ module.exports = {
       'API_KEY': JSON.stringify(define.flickr.apiKey),
       'USER_ID': JSON.stringify(define.flickr.userId)
     }),
-    new ExtractTextPlugin("[name].css"),
+    new ExtractTextPlugin('[name].css'),
     new CleanWebpackPlugin([buildPath]),
     new HtmlWebpackPlugin({
       template: path.join(srcPath, 'index.html'),

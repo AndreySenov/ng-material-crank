@@ -11,3 +11,5 @@ import '@angular/router';
 import 'hammerjs';
 import 'rxjs';
 import 'zone.js';
+
+import './vendor.scss';

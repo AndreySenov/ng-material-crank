@@ -2,7 +2,6 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import { SharedRouteDataService } from './routing/SharedRouteDataService';
-import './app.component.scss';
 
 @Component({
   selector: 'app-root',

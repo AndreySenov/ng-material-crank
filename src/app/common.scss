@@ -1,4 +1,4 @@
-$fontSize: 16px;
+@import './definition.scss';
 
 html {
   overflow: hidden;
@@ -22,20 +22,4 @@ h1 {
 
 .mc-inline-block {
   display: inline-block;
-}
-
-$toolbarHeight: 48px;
-
-@mixin toolbar-height {
-  height: $toolbarHeight;
-  min-height: $toolbarHeight;
-  min-height: $toolbarHeight;
-}
-
-@mixin content-position-fixed($top) {
-  position: fixed;
-  top: $top;
-  right: 0;
-  bottom: 0;
-  left: 0;
 }
