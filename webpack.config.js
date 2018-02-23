@@ -10,6 +10,7 @@ const define = require('./define.json');
 const basePath = path.resolve(__dirname);
 const buildPath = path.join(basePath, 'build');
 const srcPath = path.join(basePath, 'src');
+const assetsPath = path.join(srcPath, 'assets');
 
 module.exports = {
   entry: {
@@ -19,7 +20,7 @@ module.exports = {
   },
   output: {
     path: buildPath,
-    filename: '[name].js'
+    filename: '[name].[chunkhash].js'
   },
   resolve: {
     extensions: ['.js', '.ts']
@@ -44,7 +45,7 @@ module.exports = {
       {
         test: /\.(sass|scss|css)$/,
         include: srcPath,
-        exclude: path.join(srcPath, 'assets'),
+        exclude: assetsPath,
         loader: ExtractTextPlugin.extract({
           fallback: "style-loader",
           use: ["css-loader", 'sass-loader']
@@ -61,7 +62,7 @@ module.exports = {
       {
         test: /\.(jpg|png|svg)$/,
         include: srcPath,
-        exclude: path.join(srcPath, 'assets'),
+        exclude: assetsPath,
         loader: 'file-loader',
         options: {
           name: '[path][name].[hash].[ext]',
@@ -69,7 +70,7 @@ module.exports = {
       },
       {
         test: /\.(svg|ttf|eot|woff(2)?)$/,
-        include: path.join(srcPath, 'assets'),
+        include: assetsPath,
         loader: 'file-loader'
       }
     ]
@@ -80,16 +81,15 @@ module.exports = {
       'API_KEY': JSON.stringify(define.flickr.apiKey),
       'USER_ID': JSON.stringify(define.flickr.userId)
     }),
-    new ExtractTextPlugin('[name].css'),
+    new ExtractTextPlugin('[name].[contenthash].css'),
     new CleanWebpackPlugin([buildPath]),
     new HtmlWebpackPlugin({
       template: path.join(srcPath, 'index.html'),
-      favicon: path.join(srcPath, 'favicon.png'),
-      hash: true
+      favicon: path.join(srcPath, 'favicon.png')
     }),
     new webpack.optimize.CommonsChunkPlugin({
       names: ['vendor', 'polyfill'],
-      filename: '[name].js'
+      filename: '[name].[chunkhash].js'
     }),
     new AngularCompilerPlugin({
       tsConfigPath: path.join(basePath, 'tsconfig.json'),
