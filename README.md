@@ -47,15 +47,17 @@ The source code is distributed under the [MIT license](https://opensource.org/li
 ```
 * Run `yarn` to download dependencies
 
-**\*** Alternatively, you can either  [fork](https://help.github.com/articles/fork-a-repo) the repo first then clone your fork or just download a ZIP archive with the source code.
+**\*** Alternatively, you can either [fork](https://help.github.com/articles/fork-a-repo) the repo first then clone your fork or just download a ZIP archive with the source code.
 
 ## Build
 
-Run `yarn build` to make a production build of the project. The build artifacts are placed in `build/` subdirectory. There will be three bundles: `app.js`, `app.css` and `vendor.js`. Surely, you have already guessed the purpose of each of them:
+Run `yarn build` to make a production build of the project. The build artifacts are placed in `build/` subdirectory. There will be the following bundles:
 
-* `app.js` contains the application code along with external HTML templates of Angular components.
-* `app.css` amalgamates all `CSS`, `SCSS` and `SASS` files of the project. If you want to add a 3rd party file to this bundle, import one to `src/app/app.component.scss` file.
-* `vendor.js` aggregates the 3rd party dependencies. When you [add](https://yarnpkg.com/lang/en/docs/cli/add/) a new production dependency to the project, import one to `src/vendor.ts` file as well; otherwise, this dependency will be included in `app.js` bundle.
+* `polyfill.js` - polyfilling libs that must be loaded first. When you [add](https://yarnpkg.com/lang/en/docs/cli/add/) a new polyfill to the project, import one to `src/polyfill.ts` file as well.
+* `vendor.js` - 3rd party dependencies. When you [add](https://yarnpkg.com/lang/en/docs/cli/add/) a new production dependency to the project, import one to `src/vendor.ts` file as well.
+* `app.js` - the application code along with external `HTML` templates of Angular components. The entry file for this bundle is `src/main.ts`.
+* `vendor.css` - style rules imported from 3rd party libs. Import them to `src/vendor.scss` file.
+* `app.css` - the application style rules. The entry file for this bundle is `src/main.scss`.
 
 ## Development server
 
