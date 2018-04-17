@@ -1,5 +1,5 @@
 node_modules
-build
+dist
 src/**/*.js
 *.js.map
 *.log
