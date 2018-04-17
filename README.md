@@ -27,15 +27,15 @@ Please visit the [live demo](https://ng-material-crank.firebaseapp.com) to test 
 ## Legal
 This software uses the [Flickr API](https://www.flickr.com/services/api/) but is not endorsed or certified by Flickr.
 
-The source code is distributed under the [MIT license](https://opensource.org/licenses/MIT). Its copy is available in `LICENSE` file. The terms of the license don't apply to photos/videos obtained from Flickr. Each photo/video may have its own author and license.
+The source code is distributed under the [MIT license](https://opensource.org/licenses/MIT). Its copy is available in the `LICENSE` file. The terms of the license don't apply to photos/videos obtained from Flickr. Each photo/video may have its own author and license.
 
 ## Setup
 
 * Install [Node](https://nodejs.org) and [Yarn](https://yarnpkg.com)
 * Clone the repo `git clone https://github.com/AndreySenov/ng-material-crank.git` **[\*]**
 * Change the current working directory to the clone location `cd ng-material-crank`
-* Run `git update-index --assume-unchanged define.json`
-* Open `define.json` file and replace the asterisks with your [Flickr API key](https://www.flickr.com/services/api/misc.api_keys.html) and user id:
+* Run `git update-index --assume-unchanged define/define.json`
+* Open the `define/define.json` file and replace the asterisks with your [Flickr API key](https://www.flickr.com/services/api/misc.api_keys.html) and user id:
 
 ```json
 {
@@ -51,7 +51,7 @@ The source code is distributed under the [MIT license](https://opensource.org/li
 
 ## Build
 
-Run `yarn build` to make a production build of the project. The build artifacts are placed in `build/` subdirectory. There will be the following bundles:
+Run `yarn build` to make a production build of the project. The build artifacts are placed in the `dist/` subdirectory. There will be the following bundles:
 
 * `polyfill.js` - polyfilling libs that must be loaded first. When you [add](https://yarnpkg.com/lang/en/docs/cli/add/) a new polyfill to the project, import one to `src/polyfill.ts` file as well.
 * `vendor.js` - 3rd party dependencies. When you [add](https://yarnpkg.com/lang/en/docs/cli/add/) a new production dependency to the project, import one to `src/vendor.ts` file as well.
@@ -61,4 +61,4 @@ Run `yarn build` to make a production build of the project. The build artifacts 
 
 ## Development server
 
-Run `yarn serve` to start serving a development bundle on port `8080`. The app will be available at `localhost:8080` and automatically reloaded when any source files are changed. The bundle contains source maps so you'll be able to debug the code. If you need to choose a different port number, add `port: <number>` entry to `devServer` section of `webpack.config.js` file.
+Run `yarn serve` to start serving a development bundle on port `8080`. The app will be available at `localhost:8080` and automatically reloaded when any source files are changed. The bundle contains source maps so you'll be able to debug the code. If you need to choose a different port number, add `port: <number>` entry to the `devServer` section of the `webpack.config.ts` file.
