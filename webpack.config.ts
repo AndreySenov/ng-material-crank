@@ -9,7 +9,7 @@ import * as defineJson from './define/define.json';
 const define = defineJson as any as Define;
 const basePath: string = path.resolve(__dirname);
 const srcPath: string = path.join(basePath, 'src');
-const buildPath: string = path.join(basePath, 'dist')
+const buildPath: string = path.join(basePath, 'dist');
 
 export default {
   devServer: {
@@ -17,9 +17,31 @@ export default {
     historyApiFallback: true
   },
   entry: {
-    polyfill: path.join(srcPath, 'polyfill.ts'),
-    vendor: path.join(srcPath, 'vendor.ts'),
-    app: path.join(srcPath, 'main.ts')
+    app: [
+      // polyfill
+      'core-js',
+      'reflect-metadata',
+      'zone.js',
+
+      //vendor
+      '@angular/animations',
+      '@angular/cdk',
+      '@angular/common',
+      '@angular/core',
+      '@angular/forms',
+      '@angular/http',
+      '@angular/material',
+      '@angular/platform-browser',
+      '@angular/platform-browser-dynamic',
+      '@angular/router',
+      'hammerjs',
+      'rxjs',
+      path.join(srcPath, 'vendor.scss'),
+
+      //app
+      path.join(srcPath, 'main.ts'),
+      path.join(srcPath, 'main.scss')
+    ]
   },
   output: {
     filename: '[name].[chunkhash].js',
@@ -29,8 +51,22 @@ export default {
     extensions: ['.js', '.ts']
   },
   optimization: {
+    runtimeChunk: "single",
     splitChunks: {
-      chunks: 'all'
+      cacheGroups: {
+        polyfill: {
+          test: /core-js|reflect-metadata|zone.js/,
+          name: 'polyfill',
+          chunks: 'all',
+          enforce: true
+        },
+        vendor: {
+          test: /@angular|'hammerjs'|'rxjs'/,
+          name: 'vendor',
+          chunks: 'all',
+          enforce: true
+        }
+      }
     }
   },
   module: {
