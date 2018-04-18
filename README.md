@@ -51,13 +51,14 @@ The source code is distributed under the [MIT license](https://opensource.org/li
 
 ## Build
 
-Run `yarn build` to make a production build of the project. The build artifacts are placed in the `dist/` subdirectory. There will be the following bundles:
+Run `yarn build` to make a production build of the project. The build artifacts are placed in the `dist/` subdirectory. There will be the following chunks:
 
-* `polyfill.js` - polyfilling libs that must be loaded first. When you [add](https://yarnpkg.com/lang/en/docs/cli/add/) a new polyfill to the project, import one to `src/polyfill.ts` file as well.
-* `vendor.js` - 3rd party dependencies. When you [add](https://yarnpkg.com/lang/en/docs/cli/add/) a new production dependency to the project, import one to `src/vendor.ts` file as well.
-* `app.js` - the application code along with external `HTML` templates of Angular components. The entry file for this bundle is `src/main.ts`.
-* `vendor.css` - style rules imported from 3rd party libs. Import them to `src/vendor.scss` file.
-* `app.css` - the application style rules. The entry file for this bundle is `src/main.scss`.
+* `runtime.{hash}.js` - the Webpack runtime chunk.
+* `polyfill.{hash}.js` - polyfilling libs.
+* `vendor.{hash}.js` - 3rd party dependencies.
+* `app.{hash}.js` - the application code along with external `HTML` templates of Angular components.
+* `vendor.{hash}.css` - style rules imported from 3rd party libs.
+* `app.{hash}.css` - the application style rules.
 
 ## Development server
 
