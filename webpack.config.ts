@@ -99,7 +99,6 @@ export default {
   plugins: [
     new CleanWebpackPlugin([buildPath]),
     new webpack.ContextReplacementPlugin(/angular(\\|\/)core(\\|\/)/, srcPath),
-    new webpack.ContextReplacementPlugin(/\@angular(\\|\/)core(\\|\/)esm5/, srcPath),
     new webpack.DefinePlugin({
       'API_KEY': JSON.stringify(define.flickr.apiKey),
       'USER_ID': JSON.stringify(define.flickr.userId)
