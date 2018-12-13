@@ -1,7 +1,6 @@
 import * as ngtools from '@ngtools/webpack';
 import * as path from 'path';
 import * as webpack from 'webpack';
-import * as CleanWebpackPlugin from 'clean-webpack-plugin';
 import * as HtmlWebpackPlugin from 'html-webpack-plugin';
 import * as MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import * as defineJson from './define.json';
@@ -16,11 +15,9 @@ interface Define {
 const define = defineJson as Define;
 const basePath: string = path.resolve(__dirname);
 const srcPath: string = path.join(basePath, 'src');
-const buildPath: string = path.join(basePath, 'dist');
 
 export default {
   devServer: {
-    contentBase: buildPath,
     historyApiFallback: true
   },
   entry: {
@@ -78,7 +75,6 @@ export default {
     ]
   },
   plugins: [
-    new CleanWebpackPlugin([buildPath]),
     new webpack.ContextReplacementPlugin(/angular(\\|\/)core(\\|\/)/, srcPath),
     new webpack.DefinePlugin({
       'API_KEY': JSON.stringify(define.flickr.apiKey),
