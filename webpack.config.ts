@@ -25,29 +25,9 @@ export default {
   },
   entry: {
     app: [
-      // polyfill
-      'core-js',
-      'reflect-metadata',
-      'zone.js',
-
-      //vendor
-      '@angular/animations',
-      '@angular/cdk',
-      '@angular/common',
-      '@angular/core',
-      '@angular/forms',
-      '@angular/http',
-      '@angular/material',
-      '@angular/platform-browser',
-      '@angular/platform-browser-dynamic',
-      '@angular/router',
-      'hammerjs',
-      'rxjs',
-      path.join(srcPath, 'vendor.scss'),
-
-      //app
       path.join(srcPath, 'main.ts'),
-      path.join(srcPath, 'main.scss')
+      path.join(srcPath, 'main.scss'),
+      path.join(srcPath, 'vendor.scss')
     ]
   },
   output: {
@@ -61,14 +41,8 @@ export default {
     runtimeChunk: "single",
     splitChunks: {
       cacheGroups: {
-        polyfill: {
-          test: /core-js|reflect-metadata|zone.js/,
-          name: 'polyfill',
-          chunks: 'all',
-          enforce: true
-        },
         vendor: {
-          test: /@angular|'hammerjs'|'rxjs'/,
+          test: /node_modules/,
           name: 'vendor',
           chunks: 'all',
           enforce: true
