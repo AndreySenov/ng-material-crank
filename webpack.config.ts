@@ -4,9 +4,16 @@ import * as webpack from 'webpack';
 import * as CleanWebpackPlugin from 'clean-webpack-plugin';
 import * as HtmlWebpackPlugin from 'html-webpack-plugin';
 import * as MiniCssExtractPlugin from 'mini-css-extract-plugin';
-import * as defineJson from './define/define.json';
+import * as defineJson from './define.json';
 
-const define = defineJson as any as Define;
+interface Define {
+  flickr: {
+    apiKey: string,
+    userId: string
+  }
+}
+
+const define = defineJson as Define;
 const basePath: string = path.resolve(__dirname);
 const srcPath: string = path.join(basePath, 'src');
 const buildPath: string = path.join(basePath, 'dist');
