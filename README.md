@@ -34,8 +34,8 @@ The source code is distributed under the [MIT license](https://opensource.org/li
 * Install [Node](https://nodejs.org) and [Yarn](https://yarnpkg.com)
 * Clone the repo `git clone https://github.com/AndreySenov/ng-material-crank.git` **[\*]**
 * Change the current working directory to the clone location `cd ng-material-crank`
-* Run `git update-index --assume-unchanged define/define.json`
-* Open the `define/define.json` file and replace the asterisks with your [Flickr API key](https://www.flickr.com/services/api/misc.api_keys.html) and user id:
+* Run `git update-index --assume-unchanged define.json`
+* Open the `define.json` file and replace the asterisks with your [Flickr API key](https://www.flickr.com/services/api/misc.api_keys.html) and user id:
 
 ```json
 {
