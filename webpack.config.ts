@@ -92,7 +92,15 @@ export default {
       template: path.join(srcPath, 'index.html'),
       favicon: path.join(srcPath, 'favicon.png'),
       chunksSortMode: 'manual',
-      chunks: ['runtime', 'polyfill', 'vendor', 'app']
+      chunks: ['runtime', 'polyfill', 'vendor', 'app'],
+      minify: {
+        collapseWhitespace: true,
+        removeComments: true,
+        removeRedundantAttributes: true,
+        removeScriptTypeAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+        useShortDoctype: true
+      }
     })
   ]
 };
