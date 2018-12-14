@@ -21,6 +21,7 @@ export default {
     historyApiFallback: true
   },
   entry: {
+    polyfill: path.join(srcPath, 'polyfill.ts'),
     app: [
       path.join(srcPath, 'main.ts'),
       path.join(srcPath, 'main.scss'),
@@ -28,21 +29,21 @@ export default {
     ]
   },
   output: {
-    filename: '[name].[chunkhash].js',
-    chunkFilename: '[name].[chunkhash].js'
+    filename: '[name].[contenthash].js',
+    chunkFilename: '[name].[contenthash].js'
   },
   resolve: {
     extensions: ['.js', '.ts']
   },
   optimization: {
-    runtimeChunk: "single",
+    runtimeChunk: 'single',
     splitChunks: {
       cacheGroups: {
         vendor: {
-          test: /node_modules/,
+          test: /(?=.*\bnode_modules\b)(?!.*\b(core-js|reflect-metadata|zone\.js)\b)(.+)/,
           name: 'vendor',
           chunks: 'all',
-          enforce: true
+          priority: 10
         }
       }
     }
@@ -75,21 +76,23 @@ export default {
     ]
   },
   plugins: [
-    new webpack.ContextReplacementPlugin(/angular(\\|\/)core(\\|\/)/, srcPath),
     new webpack.DefinePlugin({
       'API_KEY': JSON.stringify(define.flickr.apiKey),
       'USER_ID': JSON.stringify(define.flickr.userId)
     }),
+    new webpack.HashedModuleIdsPlugin(),
     new ngtools.AngularCompilerPlugin({
       tsConfigPath: path.join(basePath, 'tsconfig.json'),
       mainPath: path.join(srcPath, 'main.ts')
-    } as ngtools.AngularCompilerPluginOptions),
+    }),
     new MiniCssExtractPlugin({
       filename: '[name].[contenthash].css'
     }),
     new HtmlWebpackPlugin({
       template: path.join(srcPath, 'index.html'),
-      favicon: path.join(srcPath, 'favicon.png')
-    }),
+      favicon: path.join(srcPath, 'favicon.png'),
+      chunksSortMode: 'manual',
+      chunks: ['runtime', 'polyfill', 'vendor', 'app']
+    })
   ]
-} as webpack.Configuration;
+};
