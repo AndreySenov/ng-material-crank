@@ -42,8 +42,7 @@ export default {
         vendor: {
           test: /(?=.*\bnode_modules\b)(?!.*\b(core-js|reflect-metadata|zone\.js)\b)(.+)/,
           name: 'vendor',
-          chunks: 'all',
-          priority: 10
+          chunks: 'all'
         }
       }
     }
