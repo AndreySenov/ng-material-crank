@@ -7,7 +7,7 @@
 mc-photo-card {
   cursor: pointer;
 
-  $photoWidth: 400px;
+  $photoWidth: 500px;
 
   .mat-card {
     padding: 24px 0 12px 0;
@@ -19,7 +19,6 @@ mc-photo-card {
   }
 
   img {
-    width: $photoWidth;
     opacity: 0;
 
     &.mc-loaded {
