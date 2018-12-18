@@ -1,6 +1,6 @@
 <mat-card>
   <legend>{{photo.title}}</legend>
   <mat-card-content>
-    <img [ngClass]="{'mc-loaded': isLoaded}" src="{{photo.photoUrl}}" (load)="onLoad()">
+    <img [ngClass]="{'mc-loaded': isLoaded}" [attr.data-src]="photo.photoUrl" (load)="onLoad()">
   </mat-card-content>
 </mat-card>

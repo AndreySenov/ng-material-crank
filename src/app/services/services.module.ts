@@ -1,8 +1,9 @@
-import { NgModule } from '@angular/core';
-import { HttpModule } from '@angular/http';
+import { NgModule } from '@angular/core'
+import { HttpModule } from '@angular/http'
 
-import { FlickrService } from './flickr.service';
-import { RestfulService } from './restful.service';
+import { FlickrService } from './flickr.service'
+import { RestfulService } from './restful.service'
+import { IntersectionService } from './intersection.service'
 
 export * from './flickr.service'
 
@@ -12,7 +13,8 @@ export * from './flickr.service'
   ],
   providers: [
     FlickrService,
-    RestfulService
+    RestfulService,
+    IntersectionService
   ]
 })
 export class ServicesModule { }

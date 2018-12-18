@@ -1,5 +1,5 @@
 <div class="mc-content">
-  <mc-photo-card *ngFor="let photo of photos" [mc-photo]="photo" (click)="onPhotoClick(photo)">
+  <mc-photo-card *ngFor="let photo of photos" [id]="photo.id" [mc-photo]="photo" (click)="onPhotoClick(photo)">
   </mc-photo-card>
 </div>
 <div class="mc-toolbar">
