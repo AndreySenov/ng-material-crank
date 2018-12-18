@@ -81,12 +81,12 @@ export class FlickrPhotos implements PaginatedContent {
   }
 }
 
-export class FlickrPhoto {
+export interface FlickrPhoto {
   id: string
   title: string
   photoUrl: string
-  linkUrl: string
-  stateUrl: string
+  linkUrl?: string
+  stateUrl?: string
 }
 
 declare const API_KEY: string
@@ -98,21 +98,21 @@ export {
 }
 
 function createFlickPhoto(photo: Photo): FlickrPhoto {
-  return Object.assign(new FlickrPhoto(), {
+  return {
     id: photo.id,
     title: photo.title,
     photoUrl: `https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.jpg`,
     linkUrl: `https://www.flickr.com/photos/49149898%40N04/${photo.id}`
-  })
+  }
 }
 
 function createFlickPhotoFromPhotoSet(photoSet: PhotoSet): FlickrPhoto {
-  return Object.assign(new FlickrPhoto(), {
+  return {
     id: photoSet.id,
     title: photoSet.title._content,
     photoUrl: `https://farm${photoSet.farm}.staticflickr.com/${photoSet.server}/${photoSet.primary}_${photoSet.secret}.jpg`,
     stateUrl: `/album/${photoSet.id}`
-  })
+  }
 }
 
 @Injectable()
