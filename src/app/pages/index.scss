@@ -1,34 +1,57 @@
-@media screen and (max-width: 1024px) {
+$break-point: 7 * $spacing + 2 * $photo-width;
+
+@media screen and (max-width: $break-point) {
   .mc-photo-card-container {
-    padding: 0 !important;
+    padding: $spacing 0 !important;
+
+    .mc-content {
+      grid-template-columns: 1fr !important;
+    }
+
+    mc-photo-card {
+      margin: 0 $spacing;
+
+      &.mc-even, &.mc-odd {
+        justify-self: center;
+      }
+    }
   }
 }
 
 .mc-photo-card-container {
   @include content-position-fixed($toolbarHeight);
 
-  padding: 8px 10%;
+  padding: $spacing;
   overflow: auto;
 
   .mc-content {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
+    display: grid;
+    grid-column-gap: 2 * $spacing;
+    grid-row-gap: $spacing;
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .mc-toolbar {
     display: flex;
     justify-content: center;
-    padding: 32px;
+    padding-top: 2 * $spacing;
+  }
+}
+
+mc-photo-card {
+
+  &.mc-even {
+    justify-self: right;
   }
 
-  mc-photo-card {
-    margin: 16px;
+  &.mc-odd {
+    justify-self: left;
   }
 }
 
 .mc-error-page {
   @include content-position-fixed($toolbarHeight);
+
 
   > h1, > div {
     text-align: center;

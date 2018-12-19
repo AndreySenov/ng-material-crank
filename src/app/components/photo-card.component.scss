@@ -1,4 +1,4 @@
-@media screen and (max-width: 450px) {
+@media screen and (max-width: $photo-width + 50px) {
   mc-photo-card img {
     width: 100% !important;
   }
@@ -7,11 +7,9 @@
 mc-photo-card {
   cursor: pointer;
 
-  $photoWidth: 500px;
-
   .mat-card {
     padding: 24px 0 12px 0;
-    max-width: $photoWidth;
+    max-width: $photo-width;
   }
 
   legend {

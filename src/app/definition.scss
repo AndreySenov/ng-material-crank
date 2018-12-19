@@ -1,5 +1,7 @@
 $fontSize: 16px;
 $toolbarHeight: 48px;
+$spacing: 16px;
+$photo-width: 500px;
 
 @mixin content-position-fixed($top) {
   position: fixed;

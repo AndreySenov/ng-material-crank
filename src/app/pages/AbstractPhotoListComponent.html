@@ -1,5 +1,8 @@
 <div class="mc-content">
-  <mc-photo-card *ngFor="let photo of photos" [id]="photo.id" [mc-photo]="photo" (click)="onPhotoClick(photo)">
+  <mc-photo-card *ngFor="let photo of photos; let even=even; let odd=odd;"
+    [ngClass]="{'mc-even': even, 'mc-odd': odd}"
+    [id]="photo.id" [mc-photo]="photo"
+    (click)="onPhotoClick(photo)">
   </mc-photo-card>
 </div>
 <div class="mc-toolbar">
