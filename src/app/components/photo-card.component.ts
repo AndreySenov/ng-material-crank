@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, AfterViewChecked } from '@angular/core'
+import { Component, ElementRef, Input, AfterViewChecked, OnDestroy } from '@angular/core'
 import { FlickrPhoto } from '../services/flickr.service'
 import { IntersectionService } from '../services/intersection.service'
 
@@ -9,7 +9,7 @@ import { IntersectionService } from '../services/intersection.service'
     'class': 'mc-inline-block'
   }
 })
-export class PhotoCard implements AfterViewChecked {
+export class PhotoCard implements AfterViewChecked, OnDestroy {
 
   photo: FlickrPhoto
   isLoaded: boolean
@@ -29,6 +29,10 @@ export class PhotoCard implements AfterViewChecked {
       })
       this.isObserved = true
     }
+  }
+
+  ngOnDestroy(): void {
+    this.intersectionService.unobserve(this.el.nativeElement)
   }
 
   @Input('mc-photo')

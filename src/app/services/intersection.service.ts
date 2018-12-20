@@ -37,4 +37,15 @@ export class IntersectionService {
     callbackMap[id] = callback
     observer.observe(target)
   }
+
+  unobserve(target: Element): void {
+    const id = target.id
+    if (!id) {
+      throw new Error('The target element must have [id] attribute')
+    }
+    if (callbackMap[id]) {
+      delete callbackMap[id]
+      observer.unobserve(target)
+    }
+  }
 }

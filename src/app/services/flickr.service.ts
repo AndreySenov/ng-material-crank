@@ -66,6 +66,21 @@ interface PhotoSet {
   photoUrl: string
 }
 
+interface PhotoSizesResponse extends FlickrResponse {
+  sizes: Sizes
+}
+
+interface Sizes {
+  size: Size[]
+}
+
+interface Size {
+  label: string,
+  width: number,
+  height: number,
+  source: string
+}
+
 export class FlickrPhotos implements PaginatedContent {
   page: number
   pages: number
@@ -81,12 +96,18 @@ export class FlickrPhotos implements PaginatedContent {
   }
 }
 
+export interface FlickrPhotoSize {
+  width: number,
+  height: number
+}
+
 export interface FlickrPhoto {
   id: string
   title: string
   photoUrl: string
   linkUrl?: string
-  stateUrl?: string
+  stateUrl?: string,
+  size?: FlickrPhotoSize
 }
 
 declare const API_KEY: string
@@ -97,7 +118,7 @@ export {
   USER_ID
 }
 
-function createFlickPhoto(photo: Photo): FlickrPhoto {
+function createFlickrPhoto(photo: Photo): FlickrPhoto {
   return {
     id: photo.id,
     title: photo.title,
@@ -106,9 +127,9 @@ function createFlickPhoto(photo: Photo): FlickrPhoto {
   }
 }
 
-function createFlickPhotoFromPhotoSet(photoSet: PhotoSet): FlickrPhoto {
+function createFlickrPhotoFromPhotoSet(photoSet: PhotoSet): FlickrPhoto {
   return {
-    id: photoSet.id,
+    id: photoSet.primary,
     title: photoSet.title._content,
     photoUrl: `https://farm${photoSet.farm}.staticflickr.com/${photoSet.server}/${photoSet.primary}_${photoSet.secret}.jpg`,
     stateUrl: `/album/${photoSet.id}`
@@ -122,16 +143,19 @@ export class FlickrService {
   `https://api.flickr.com/services/rest/?api_key=${API_KEY}&user_id=${USER_ID}&format=json&nojsoncallback=1&`
 
   private static readonly PHOTOSTREAM_URL: string = FlickrService.URL_PREFIX +
-  `method=flickr.photos.search&per_page=30&page=`
+  `method=flickr.photos.search&privacy_filter=1&per_page=30&page=`
 
   private static readonly PHOTOALBUMS_URL: string = FlickrService.URL_PREFIX +
   `method=flickr.photosets.getList&per_page=30&page=`
 
   private static readonly PHOTOALBUM_URL: string = FlickrService.URL_PREFIX +
-  `method=flickr.photosets.getPhotos&per_page=30&page=`
+  `method=flickr.photosets.getPhotos&privacy_filter=1&per_page=30&page=`
 
   private static readonly PHOTOALBUM_INFO_URL: string = FlickrService.URL_PREFIX +
-  `method=flickr.photosets.getInfo&format=json&nojsoncallback=1&photoset_id=`
+  `method=flickr.photosets.getInfo&photoset_id=`
+
+  private static readonly PHOTOSIZES_URL: string = FlickrService.URL_PREFIX +
+  `method=flickr.photos.getSizes&photo_id=`
 
   constructor(
     private restful: RestfulService
@@ -140,20 +164,20 @@ export class FlickrService {
   getPhotostreamPage(page: number): Promise<FlickrPhotos> {
     this.checkPage(page)
     return this.restful.get(FlickrService.PHOTOSTREAM_URL + page)
-    .then((photoSearchResponse: PhotoSearchResponse) => {
-      const flickrPhotos = new FlickrPhotos(photoSearchResponse.photos)
-      flickrPhotos.photos = photoSearchResponse.photos.photo.map(createFlickPhoto)
-      return flickrPhotos
+    .then((response: PhotoSearchResponse) => {
+      const flickrPhotos = new FlickrPhotos(response.photos)
+      flickrPhotos.photos = response.photos.photo.map(createFlickrPhoto)
+      return this.mapPhotoSizes(flickrPhotos).then(() => flickrPhotos)
     })
   }
 
   getPhotoAlbumsPage(page: number): Promise<FlickrPhotos> {
     this.checkPage(page)
     return this.restful.get(FlickrService.PHOTOALBUMS_URL + page)
-    .then((photoSetsResponse: PhotoSetsResponse) => {
-      const flickrPhotos = new FlickrPhotos(photoSetsResponse.photosets)
-      flickrPhotos.photos = photoSetsResponse.photosets.photoset.map(createFlickPhotoFromPhotoSet)
-      return flickrPhotos
+    .then((response: PhotoSetsResponse) => {
+      const flickrPhotos = new FlickrPhotos(response.photosets)
+      flickrPhotos.photos = response.photosets.photoset.map(createFlickrPhotoFromPhotoSet)
+      return this.mapPhotoSizes(flickrPhotos).then(() => flickrPhotos)
     })
   }
 
@@ -161,17 +185,50 @@ export class FlickrService {
     this.checkAlbum(albumId)
     this.checkPage(page)
     return this.restful.get(`${FlickrService.PHOTOALBUM_URL}${page}&photoset_id=${albumId}`)
-    .then((photoSetResponse: PhotoSetResponse) => {
-      const flickrPhotos = new FlickrPhotos(photoSetResponse.photoset)
-      flickrPhotos.photos = photoSetResponse.photoset.photo.map(createFlickPhoto)
-      return flickrPhotos
+    .then((response: PhotoSetResponse) => {
+      const flickrPhotos = new FlickrPhotos(response.photoset)
+      flickrPhotos.photos = response.photoset.photo.map(createFlickrPhoto)
+      return this.mapPhotoSizes(flickrPhotos).then(() => flickrPhotos)
     })
   }
 
   getPhotoAlbumTitle(albumId: string): Promise<string> {
     this.checkAlbum(albumId)
     return this.restful.get(FlickrService.PHOTOALBUM_INFO_URL + albumId)
-    .then((photoSetInfoResponse: PhotoSetInfoResponse) => photoSetInfoResponse.photoset.title._content)
+    .then((response: PhotoSetInfoResponse) => response.photoset.title._content)
+  }
+
+  private getPhotoSize(photoId: string): Promise<FlickrPhotoSize> {
+    this.checkPhoto(photoId)
+    return this.restful.get(FlickrService.PHOTOSIZES_URL + photoId)
+    .then((response: PhotoSizesResponse) => response.sizes.size)
+    .then((sizes: Size[]) => {
+      const size = sizes.find(s => s.label === "Medium")
+      return {
+        width: size.width,
+        height: size.height
+      }
+    })
+  }
+
+  private mapPhotoSizes(flickrPhotos: FlickrPhotos): Promise<void[]> {
+    const map: { [id: string]: FlickrPhoto } = {}
+    const photoPromises: Promise<void>[] = flickrPhotos.photos.map(
+      (flickrPhoto: FlickrPhoto) => {
+        map[flickrPhoto.id] = flickrPhoto
+        return this.getPhotoSize(flickrPhoto.id).then(
+          (size: FlickrPhotoSize) => {
+            map[flickrPhoto.id].size = size
+          })
+      }
+    )
+    return Promise.all(photoPromises)
+  }
+
+  private checkPage(page: number): void {
+    if (!page || page < 0) {
+      throw new Error(`Invalid page number: ${page}`)
+    }
   }
 
   private checkAlbum(albumId: string) {
@@ -180,9 +237,9 @@ export class FlickrService {
     }
   }
 
-  private checkPage(page: number): void {
-    if (!page || page < 0) {
-      throw new Error(`Invalid page number: ${page}`)
+  private checkPhoto(photoId: string) {
+    if (!photoId) {
+      throw new Error(`Invalid photo ID: ${photoId}`)
     }
   }
 }
