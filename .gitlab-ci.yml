@@ -1,5 +1,10 @@
 image: node:10
 
+cache:
+  paths:
+    - node_modules/
+    - dist/
+
 stages:
   - build
   - deploy
@@ -9,6 +14,7 @@ build:
   before_script:
     - yarn
   script:
+    - yarn clean
     - yarn build
 
 deploy:
@@ -19,5 +25,4 @@ deploy:
   before_script:
     - yarn global add firebase-tools
   script:
-    - firebase use --token $FIREBASE_DEPLOY_KEY ng-material-crank
-    - firebase deploy --token $FIREBASE_DEPLOY_KEY --non-interactive -m "Pipeline $CI_PIPELINE_ID, build $CI_BUILD_ID"
+    - firebase deploy --token $FIREBASE_TOKEN --non-interactive -m "Pipeline $CI_PIPELINE_ID, Build $CI_BUILD_ID"

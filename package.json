@@ -6,7 +6,8 @@
   "scripts": {
     "clean": "rimraf dist",
     "build": "webpack -p",
-    "serve": "webpack-dev-server -d --progress"
+    "serve": "webpack-dev-server -d --progress",
+    "deploy": "yarn clean && yarn build && firebase deploy"
   },
   "devDependencies": {
     "@angular-devkit/core": "^7.1.4",
