@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "clean": "rimraf dist",
-    "build": "yarn clean && webpack -p --progress",
+    "build": "yarn clean && webpack -p",
     "serve": "yarn clean && webpack-dev-server -d --progress"
   },
   "devDependencies": {
