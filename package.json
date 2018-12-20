@@ -5,8 +5,8 @@
   "private": true,
   "scripts": {
     "clean": "rimraf dist",
-    "build": "yarn clean && webpack -p",
-    "serve": "yarn clean && webpack-dev-server -d --progress"
+    "build": "webpack -p",
+    "serve": "webpack-dev-server -d --progress"
   },
   "devDependencies": {
     "@angular-devkit/core": "^7.1.4",
