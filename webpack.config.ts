@@ -76,8 +76,8 @@ export default {
   },
   plugins: [
     new webpack.DefinePlugin({
-      'API_KEY': JSON.stringify(define.flickr.apiKey),
-      'USER_ID': JSON.stringify(define.flickr.userId)
+      'API_KEY': process.env.FLICKR_API_KEY || JSON.stringify(define.flickr.apiKey),
+      'USER_ID': process.env.FLICKR_USER_ID || JSON.stringify(define.flickr.userId)
     }),
     new webpack.HashedModuleIdsPlugin(),
     new ngtools.AngularCompilerPlugin({
