@@ -1,8 +1,8 @@
 [license]: https://img.shields.io/badge/license-MIT-blue.svg
 [license-url]: https://github.com/AndreySenov/ng-material-crank/blob/master/LICENSE
 
-[build]: https://travis-ci.org/AndreySenov/ng-material-crank.svg?branch=master
-[build-url]: https://travis-ci.org/AndreySenov/ng-material-crank
+[pipeline]: https://gitlab.com/AndreySenov/ng-material-crank/badges/master/pipeline.svg
+[pipeline-url]: https://github.com/AndreySenov/ng-material-crank/commits/master
 
 [prs-welcome]: https://img.shields.io/badge/PRs-welcome-brightgreen.svg
 [prs-welcome-url]: https://github.com/AndreySenov/ng-material-crank/pulls
@@ -15,7 +15,7 @@
 
 # ng-material-crank
 [![license][license]][license-url]
-[![build][build]][build-url]
+[![pipeline][pipeline]][pipeline-url]
 [![prs-welcome][prs-welcome]][prs-welcome-url]
 [![deps][deps]][deps-url]
 [![deps-dev][deps-dev]][deps-dev-url]
