@@ -1,4 +1,4 @@
-image: node:10
+image: andreysenov/firebase-tools
 
 cache:
   paths:
@@ -22,7 +22,5 @@ deploy:
   environment: Firebase
   only:
     - master
-  before_script:
-    - yarn global add firebase-tools
   script:
     - firebase deploy --token $FIREBASE_TOKEN --non-interactive -m "Pipeline $CI_PIPELINE_ID, Build $CI_BUILD_ID"
