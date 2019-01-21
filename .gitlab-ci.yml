@@ -1,4 +1,4 @@
-image: andreysenov/firebase-tools
+image: andreysenov/firebase-tools:latest
 
 cache:
   paths:
