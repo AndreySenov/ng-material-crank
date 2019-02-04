@@ -18,7 +18,8 @@ const srcPath: string = path.join(basePath, 'src');
 
 export default {
   devServer: {
-    historyApiFallback: true
+    historyApiFallback: true,
+    host: '0.0.0.0'
   },
   entry: {
     polyfill: path.join(srcPath, 'polyfill.ts'),
