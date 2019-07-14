@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core'
-import { HttpModule } from '@angular/http'
+import { HttpClientModule } from '@angular/common/http'
 
 import { FlickrService } from './flickr.service'
 import { RestfulService } from './restful.service'
@@ -9,7 +9,7 @@ export * from './flickr.service'
 
 @NgModule({
   imports: [
-    HttpModule
+    HttpClientModule
   ],
   providers: [
     FlickrService,

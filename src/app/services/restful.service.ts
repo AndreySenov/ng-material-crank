@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class RestfulService {
 
   constructor(
-    private http: Http
+    private httpClient: HttpClient
   ) {}
 
-  get(url: string): Promise<any> {
-    return this.http.get(url).toPromise()
-      .then((response: Response) => JSON.parse(response.text()));
+  get<T>(url: string): Promise<T> {
+    return this.httpClient.get(url).toPromise()
+      .then((response: T) => response);
   }
 }
